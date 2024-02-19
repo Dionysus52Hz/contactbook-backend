@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { CONTACT_ROUTER } from './app/routes/contactRoute.js';
+import ApiError from './app/apiError.js';
 
 const app = express();
 
@@ -14,5 +15,15 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/contacts', CONTACT_ROUTER);
+
+app.use((req, res, next) => {
+   return next(new ApiError(404, 'Resource not found'));
+});
+
+app.use((err, req, res, next) => {
+   return res.status(err.statusCode || 500).json({
+      message: err.message || 'Internal Server Error',
+   });
+});
 
 export default app;
