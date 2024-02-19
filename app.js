@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { CONTACT_ROUTER } from './app/routes/contactRoute.js';
 
 const app = express();
 
@@ -11,5 +12,7 @@ app.get('/', (req, res) => {
       message: 'Welcome to contact book application.',
    });
 });
+
+app.use('/api/contacts', CONTACT_ROUTER);
 
 export default app;
