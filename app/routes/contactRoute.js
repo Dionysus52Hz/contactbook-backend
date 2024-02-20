@@ -14,7 +14,7 @@ router.route('/favorite').get(CONTROLLERS.FINDALLFAVORITE);
 router
    .route('/:id')
    .get(CONTROLLERS.FINDONE)
-   .post(CONTROLLERS.UPDATE)
+   .put(CONTROLLERS.UPDATE)
    .delete(CONTROLLERS.DELETE);
 
 export const CONTACT_ROUTER = router;

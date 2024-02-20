@@ -1,17 +1,15 @@
 import express from 'express';
 import cors from 'cors';
-import { CONTACT_ROUTER } from './app/routes/contactRoute.js';
 import ApiError from './app/apiError.js';
 
 const app = express();
+import { CONTACT_ROUTER } from './app/routes/contactRoute.js';
 
 app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-   res.json({
-      message: 'Welcome to contact book application.',
-   });
+   res.json({ message: 'Welcome to contact book application.' });
 });
 
 app.use('/api/contacts', CONTACT_ROUTER);
